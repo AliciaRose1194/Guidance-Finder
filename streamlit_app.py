@@ -125,4 +125,4 @@ else:
                 else:
                     st.warning(f"File '{filename}' not found in the guidance folder.")
 st.markdown("___")
-st.caption("Guidance Finder Prototype 2026 - Alicia R Fell - LCC")
+st.caption("@ Guidance Finder Prototype 2026 - Alicia R Fell - LCC")
