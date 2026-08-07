@@ -67,35 +67,33 @@ else:
     ]
     else:
         results = df
-if system != "All":
-    results = results[results["System"] == system]
+    if system != "All":
+        results = results[results["System"] == system]
 
-if category != "All":
-    results = results[results["Category"] == category]
+    if category != "All":
+        results = results[results["Category"] == category]
 
-else:
-     st.success(f"Found {len(results)} guidance document(s) matching your search criteria.")
+    st.success(f"Found {len(results)} guidance document(s) matching your search criteria.")
 
-     for _, row in results.iterrows():
-         title = row["Title"]
-         summary = row["Summary"]
-         system = row["System"]
-         category = row["Category"]
-         filename = row["File"]
+    for _, row in results.iterrows():
+        title = row["Title"]
+        summary = row["Summary"]
+        system_val = row["System"]
+        category_val = row["Category"]
+        filename = row.get("File", "")
 
-         file_path = os.path.join(guidance_folder, filename)
-         if os.path.exists(file_path):
-             with open(file_path, "rb") as f:
-                 file_bytes = f.read()
-             st.markdown(f"### {title}")
-             st.markdown(f"**System:** {system} | **Category:** {category}")
-             st.markdown(f"**Summary:** {summary}")
-             st.download_button(
-                 label="Download Guidance Document",
-                 data=file_bytes,
-                 file_name=filename,
-                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-             )
-             st.markdown("---")
-         else:
-             st.warning(f"File '{filename}' not found in the guidance folder.")
+        file_path = os.path.join(guidance_folder, filename)
+        with st.expander(title):
+            if filename and os.path.exists(file_path):
+                with open(file_path, "rb") as f:
+                    file_bytes = f.read()
+                st.markdown(f"**System:** {system_val} | **Category:** {category_val}")
+                st.markdown(f"**Summary:** {summary}")
+                st.download_button(
+                    label=f"Download {title}",
+                    data=file_bytes,
+                    file_name=filename,
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                )
+            else:
+                st.warning(f"File '{filename}' not found in the guidance folder.")
