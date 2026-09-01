@@ -6,33 +6,34 @@ import os
 st.set_page_config(
     page_title="Guidance Finder",
     layout="wide",
-    page_icon="getsitelogo.png",
-)
+    page_icon=":getsitelogo.png:"
+    )
 st.markdown("""
   <div style="
     background-color:#1A6235;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom:20px;
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 35px;
+    text-align: center
 ">
     <h1 style="
         color:white;
         margin: 0;
-        text-align: left;
-        padding-left: 300px;
+        white-space: nowrap;
+        font-size: clamp(30px, 5vw, 46px);
     ">
         Guidance Finder
     </h1>
     <h5 style="
     color:white;
     margin:0;
-    text-align: left;
-    padding-left: 300px;">
+    font-size: clamp(18px, 1.5vw, 18px);">
         <p>Search Internal Guidance Documents</p>
     </h5>
   </div>
   """, unsafe_allow_html=True
 )
+st.write("")
 
 def reset_search():
       st.session_state["search"] = ""
