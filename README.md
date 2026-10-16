@@ -1,25 +1,16 @@
-# 🎈 Blank app template
+# Guidance Finder
 
-A simple Streamlit app template for you to modify!
+Search internal guidance documents by title, summary, keyword, system, or category.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+### Run on Windows
 
-### How to run it on your own machine
+Install Python and [uv](https://docs.astral.sh/uv/getting-started/installation/)
+once, then double-click `Run Guidance Finder.bat`. The first run sets up the
+project environment and installs its dependencies automatically. Later runs
+reuse that environment.
 
-Prerequisite: install `uv` if you don't already have it.
+Alternatively, open a terminal in this folder and run:
 
+```powershell
+uv run streamlit run streamlit_app.py
 ```
-$ curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-1. Sync the dependencies
-
-   ```
-   $ uv sync
-   ```
-
-2. Run the app
-
-   ```
-   $ uv run streamlit run streamlit_app.py
-   ```

@@ -5,7 +5,7 @@ import os
 st.set_page_config(
     page_title="Guidance Finder",
     layout="wide",
-    page_icon=":getsitelogo.png:"
+    page_icon="🔎"
     )
 st.markdown("""
   <div style="
