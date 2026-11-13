@@ -76,9 +76,9 @@ if not has_filters:
 else:
     if search:
          results = df[
-    (df["Title"].str.contains(search, case=False, na=False)) |
-    (df["Summary"].str.contains(search, case=False, na=False)) |
-    (df["Keywords"].str.contains(search, case=False, na=False))
+    (df["Title"].str.contains(search, case=False, na=False, regex=False)) |
+    (df["Summary"].str.contains(search, case=False, na=False, regex=False)) |
+    (df["Keywords"].str.contains(search, case=False, na=False, regex=False))
     ]
     else:
         results = df
@@ -101,13 +101,13 @@ else:
             filename = str(row.get("File", "")).strip()
             file_path = os.path.join(guidance_folder, filename)
             with st.expander(title):
+                st.markdown(f"**System:** {system_val} | **Category:** {category_val}")
+                st.markdown(f"**Summary:** {summary}")
                 if not filename:
                     st.warning("No file specified for this guidance.")
                 elif os.path.exists(file_path):
                     with open(file_path, "rb") as f:
                         file_bytes = f.read()
-                    st.markdown(f"**System:** {system_val} | **Category:** {category_val}")
-                    st.markdown(f"**Summary:** {summary}")
                     _, ext = os.path.splitext(filename)
                     ext = ext.lower()
                     if ext == ".docx":
