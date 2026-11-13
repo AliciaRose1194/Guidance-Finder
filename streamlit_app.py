@@ -40,7 +40,6 @@ def reset_search():
       st.session_state["category"] = "All"
 st.button(
     "Reset Search", on_click=reset_search)
-
 df = pd.read_csv("Guidance Database Prototype CSV.csv")
 guidance_folder = "Guidance Files"
 
